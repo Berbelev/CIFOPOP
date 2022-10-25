@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'default' => env('FILESYSTEM_DRIVER', 'public'),  // guardar los ficheros en storage/app/public
 
     /*
     |--------------------------------------------------------------------------
@@ -67,6 +67,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('resources') => storage_path(''),
     ],
 
 ];
