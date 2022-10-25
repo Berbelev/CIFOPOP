@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'CIFOPOP'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -230,3 +230,14 @@ return [
     ],
 
 ];
+
+/**
+ * TODO:Chacé de configuración
+ * Antes de subir a producción, poner todos los ficheros de configuración
+ * en caché para mejor de rendimiento.
+ *
+ *      php artisan config:cache                bootstrap/cache/config.php
+ *
+ *      php artisan config:clear                ->borra la caché
+ *
+ */

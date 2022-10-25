@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator; // para la paginación
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,8 +22,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        //
+    public function boot(){
+        // indcar que usampos bootstrap para la paginación
+        Paginator::useBootstrap();
+
     }
 }
