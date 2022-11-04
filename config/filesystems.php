@@ -27,6 +27,8 @@ return [
     | Supported Drivers: "local", "ftp", "sftp", "s3"
     |
     */
+    // ruta por defecto para las fotos de las motos
+    'bikesImageDir'=>'/images/anuncios',
 
     'disks' => [
 
