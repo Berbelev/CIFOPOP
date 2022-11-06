@@ -2,6 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Http\Request;
+
+
+use App\Http\Controllers\AnuncioController;
+use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ConfirmPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\RegisterController;
+
+use Illuminate\Support\Facades\Auth;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +29,103 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
+/*==========================================================================
+| Autenticación
+*///==========================================================================
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*==========================================================================
+| WelcomeControler Web Routes
+|==========================================================================
+| (Portada)
+|   Single action Controler __invoke()
+*/
+Route::get('/', WelcomeController::class)->name('portada');
+
+/*==========================================================================
+| AnuncioControler Web Routes
+|==========================================================================
+|   CRUD
+*/
+
+// ATAJO para EDITAR la ÚLTIMA moto creada(para el ejemplo de cookies)
+Route::get('/anuncios/editlast', [AnuncioController::class, 'editLast'])
+        ->name('anuncios.editlast');
+
+// FORMULARIO para BUSQUEDA de motos
+// buscar motos por marca(obligatorio) y modelo (opcional)
+Route::match(['GET','POST'], '/anuncios/buscar',
+                            [AnuncioController::class, 'search'])
+        ->name('anuncios.search');
+
+
+
+Route::resource('/anuncios', AnuncioController::class)
+    ->names([
+        'show'=>'anuncios.show',
+        'index'=>'anuncios.index',
+        'create'=>'anuncios.create',
+        'store'=>'anuncios.store',
+        'edit'=>'anuncios.edit',
+        'update'=>'anuncios.update',
+        'destroy'=>'anuncios.destroy'])
+    ->parameters(['anuncios'=>'anuncio']);
+
+
+
+// FORMULARIO de CONFIRMACIÓN para la ELIMINACIÓN de un anuncio
+Route::get('anuncios/{anuncio}/borrar', [AnuncioController::class , 'delete'])
+    ->name('anuncios.delete')
+    ->middleware('throttle:3,1');
+
+// ELIMINACIÓN DEFINITIVA DEL ANUNCIO
+// va por DELETE
+Route::delete('/anuncios/purge', [AnuncioController::class,'purge'])
+    ->name('anuncios.purge');
+
+// RESTAURACIÓN DE LA ANUNCIO
+Route::get('/anuncios/{anuncio}/restore', [AnuncioController::class,'restore'])
+    ->name('anuncios.restore');
+
+
+
+/*==========================================================================
+| Grupo de rutas solo para el Administrador
+|==========================================================================
+|   Llevarán el prefijo 'admin'
+*/
+Route::prefix('admin')->middleware('auth', 'is_admin')->group(function(){
+
+    // ver los anuncios eliminados(/admin/deletedanuncios)
+    Route::get('deletedanuncios', [AdminController::class,'deletedAnuncios'])
+        ->name('admin.deleted.anuncios');
+
+});
+
+
+/*==========================================================================
+| ContactoController Web Routes
+|==========================================================================
+|   index() muestra formulario
+|   send() recibe datos y envía mail
+*/
+// RUTA PRA EL FORUMUARIO DE CONTACTO
+Route::get('/contacto',[ContactoController::class, 'index'])
+->name('contacto');
+
+// RUTA PARA EL ENVÍO DEL EMAIL DE CONTACTO
+Route::post('/contacto',[ContactoController::class, 'send'])
+->name('contacto.mail');
+
+
+
+/*
+|==========================================================================
+|  RUTA DE FALLBACK (debe ser la ultima en el fichero)
+|==========================================================================
+*/
+Route::fallback(WelcomeController::class);
+
+
