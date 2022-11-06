@@ -27,7 +27,7 @@ class AnuncioController extends Controller{
     public function index(){
 
         /**
-        *| Recupera las motos de la BDD usando el modelo
+        *| Recupera los anuncios de la BDD usando el modelo
         *| Ordenado por id descendente y
         *| Paginación de 10 resultados por pagina
         */

@@ -20,7 +20,7 @@ class CreateAnunciosTable extends Migration{
             $table->string('titulo', 255);
             $table->string('descripcion',255);
             $table->float('importe')->default(0);
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
 
 
 

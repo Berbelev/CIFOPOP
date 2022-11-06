@@ -21,7 +21,7 @@ class UserIdToAnunciosTable extends Migration
             // relaciona los dos campos
             $table->foreign('user_id')
                   ->references('id')->on('users')
-                  ->onUpdate('cascade')->onDelete('restrict');
+                  ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

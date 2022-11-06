@@ -40,7 +40,7 @@ class CreateRoleUserIntertable extends Migration
             $table->dropForeign('role_user_role_id_foreign');
             $table->dropForeign('role_user_user_id_foreign');
         });
-        
+
         Schema::dropIfExists('role_user_intertable');
     }
 }

@@ -3,16 +3,17 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Anuncio;
 
-class DatabaseSeeder extends Seeder
+class AnuncioSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        //\App\Models\User::factory(10)->create();
+        Anuncio::factory(30)->create();
     }
 }
