@@ -230,15 +230,13 @@ return [
 
     ],
 
+     /*
+    |--------------------------------------------------------------------------
+    | Favicon
+    |--------------------------------------------------------------------------
+    */
+    'favicon'=>env('LOGO_FILE', 'asset(imgagenes/template/logo.png)')
+
 ];
 
-/**
- * TODO:Chacé de configuración
- * Antes de subir a producción, poner todos los ficheros de configuración
- * en caché para mejor de rendimiento.
- *
- *      php artisan config:cache                bootstrap/cache/config.php
- *
- *      php artisan config:clear                ->borra la caché
- *
- */
+

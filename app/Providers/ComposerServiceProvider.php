@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use App\Http\View\Composers\BikeComposer;
+use App\Http\View\Composers\AnuncioComposer;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -25,6 +25,6 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()    {
         /// Vincula el ViewComposer a la vista de listado
-        View::composer('*', BikeComposer::class);
+        View::composer('*', AnuncioComposer::class);
     }
 }

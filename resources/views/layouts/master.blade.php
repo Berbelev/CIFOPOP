@@ -26,16 +26,16 @@
         <!-- FAVICON-->
         <link rel="shortcut icon" href="{{config('app.favicon')}}" type="image/png">
     </head>
-    <body class="container p-3">
-        <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-                <div class="container">
+    <body class="container p-3" >
+        <div id="app" >
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" >
+                <div class="container" >
                     <figure>
                         <a class="navbar-brand"
                         href="{{route('portada')}}">
                             <img id="inicio" alt="logo cifopop"
                                 src="{{asset(config('app.favicon'))}}"
-                                width="100">
+                                width="50">
                             {{ config('app.name', 'Laravel') }}
                         </a>
                     </figure>
@@ -116,9 +116,10 @@
                         <a clas="nav-link {{$pagina=='portada'
                                             ? 'active':''}}"
                         href="{{route('portada')}}">
-                            <img id="inicio" alt="logo cifopop"
+                            <img class="text-center"
+                                id="inicio" alt="logo cifopop"
                                 src="{{asset(config('app.favicon'))}}"
-                                width="70">
+                                width="40">
                         </a>
                     </figure>
                 </li>
