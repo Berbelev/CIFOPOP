@@ -10,6 +10,7 @@
                     <figure>
                         <img class="rounded"
                              alt="Error 503"
+                             title="servicio no disponible, error 503"
                              src="{{asset('imagenes/errores/503.jpg')}}">
                     </figure>
                 </div>

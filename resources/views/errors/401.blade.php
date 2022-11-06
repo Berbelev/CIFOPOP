@@ -10,6 +10,7 @@
                     <figure>
                         <img class="rounded" width="400px"
                              alt="Error 401"
+                             title="no autorizado,error 401 "
                              src="{{asset('imagenes/errores/401.jpg')}}">
                     </figure>
                 </div>

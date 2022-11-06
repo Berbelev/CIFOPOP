@@ -9,7 +9,8 @@
                     ERROR 403:
                     <figure>
                         <img class="rounded" width="400px"
-                             alt="Error 429"
+                             alt="Error 403"
+                             title="prohibido, error 403"
                              src="{{asset('imagenes/errores/403.jpg')}}">
                     </figure>
                 </div>

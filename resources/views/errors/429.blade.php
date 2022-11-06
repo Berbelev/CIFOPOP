@@ -10,6 +10,7 @@
                     <figure>
                         <img class="rounded" width="400px"
                              alt="Error 429"
+                             title="demasiadas peticiones, error 429"
                              src="{{asset('imagenes/errores/429.png')}}">
                     </figure>
                 </div>
