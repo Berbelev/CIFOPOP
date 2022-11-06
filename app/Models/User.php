@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable implements MustVerifyEmail{
+
     use HasFactory, Notifiable;
 
     /**
@@ -19,6 +19,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
+        'poblacion',
+        'telefono',
+        'foto',
         'password',
     ];
 
@@ -40,4 +44,51 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // método que recupera todas la motos relaccionadas con el usuario
+    // como la relación es 1 a N , usamos el método hasMany()
+    public function anuncios(){
+        return $this->hasMany('\App\Models\Anuncio');
+    }
+
+
+    // recupera los roles del usuario
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role');
+    }
+
+     // método que indica si un usuario tiene un rol concreto
+    // a partir del nombre del rol o array de roles (se aplica un OR)
+    public function hasRole($roleNames):bool{
+
+        // si solamente viene un rol, lo mete en un array
+        if(!is_array($roleNames))
+            $roleNames = [$roleNames];
+
+        // recorre la lista de roles buscando...
+        foreach($this->roles as $role){
+
+            if(in_array($role->role, $roleNames))
+                return true; // si lo encuentra
+        }
+        return false; // si lo encuentra
+    }
+
+    // método para saber si un usuario es propietario de un anuncio
+    public function isOwner(Anuncio $anuncio):bool{
+        return $this->id == $anuncio->user_id;
+    }
+
+    // método que recupera los roles del usuario
+    public function remainingRoles(){
+
+        // user roles
+        $actualRoles = $this->roles;
+
+        // todos los roles
+        $allRoles= Role::all();
+
+        // retorna todos los roles menos los que ya tiene el usuario
+        return $allRoles->diff($actualRoles);
+    }
 }
