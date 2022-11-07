@@ -7,7 +7,6 @@
             <div class="content" style="text-align: center">
                 <div class='title mt-5' style="font-size: 3rem">
                     ERROR 404: Uh-Oh.... :)
-                    ERROR 403:
                     <figure>
                         <img class="rounded" width="400px"
                              alt="Error 404"
@@ -25,5 +24,5 @@
 
 @section('enlaces')
     @parent
-    <a href="{{route('bikes.index')}}" class="btn btn-primary m-2">Garaje</a>
+    <a href="{{route('anuncios.index')}}" class="btn btn-primary m-2">Catálogo</a>
 @endsection

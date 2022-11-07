@@ -25,5 +25,5 @@
 
 @section('enlaces')
     @parent
-    <a href="{{route('bikes.index')}}" class="btn btn-primary m-2">Garaje</a>
+    <a href="{{route('anuncios.index')}}" class="btn btn-primary m-2">Catálogo</a>
 @endsection

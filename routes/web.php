@@ -50,10 +50,6 @@ Route::get('/', WelcomeController::class)->name('portada');
 |   CRUD
 */
 
-// ATAJO para EDITAR la ÚLTIMA moto creada(para el ejemplo de cookies)
-Route::get('/anuncios/editlast', [AnuncioController::class, 'editLast'])
-        ->name('anuncios.editlast');
-
 // FORMULARIO para BUSQUEDA de motos
 // buscar motos por marca(obligatorio) y modelo (opcional)
 Route::match(['GET','POST'], '/anuncios/buscar',
@@ -82,7 +78,7 @@ Route::get('anuncios/{anuncio}/borrar', [AnuncioController::class , 'delete'])
 
 // ELIMINACIÓN DEFINITIVA DEL ANUNCIO
 // va por DELETE
-Route::delete('/anuncios/purge', [AnuncioController::class,'purge'])
+Route::delete('/anuncio/purge', [AnuncioController::class , 'purge'])
     ->name('anuncios.purge');
 
 // RESTAURACIÓN DE LA ANUNCIO

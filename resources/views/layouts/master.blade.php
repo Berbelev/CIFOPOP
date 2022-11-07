@@ -148,7 +148,7 @@
                     <a class="nav-link {{$pagina=='anuncios.create'?'active':''}}"
                      href="{{route('anuncios.create')}}">Nuevo Anuncio</a>
                 </li>
-                @if(Auth::user()->hasRole('administrador'))
+                @if(Auth::user()->hasRole('admin'))
                     <li class="nav-item mr-2">
                         <a class="nav-link {{$pagina=='anuncios.deleted.anuncios'?'active':''}}"
                         href="{{route('admin.deleted.anuncios')}}">Anuncios Borrados</a>

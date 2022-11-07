@@ -141,7 +141,7 @@
 
             @if ($loop->last)
                 <tr>
-                    <td colspan="7">Mostrando {{sizeof($anuncios)}} de {{$anuncios->total()}}.</td>
+                    <td colspan="7"></td>
                 <tr>
             @endif
         @empty
@@ -193,15 +193,13 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <a onclick='
-                            if(confirm("¿Estás seguro de borrar el anuncio definitivamente?"))
-                                this.nextElementSibling.submit();'>
-                            <button class="btn btn-danger">Eliminar</button>
-                        </a>
+
                         <form method="POST" action="{{ route('anuncios.purge')}}">
                             @csrf
                             <input name="_method" type="hidden" value="DELETE">
                             <input name="anuncio_id" type="hidden" value="{{$anuncio->id}}">
+                            <input type="submit" alt="Borrar" title="Eliminar"
+                                    class="btn btn-danger" value="Eliminar">
                         </form>
                     </td>
                 </tr>
