@@ -12,8 +12,8 @@ class AnuncioSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        Anuncio::factory(30)->create();
+    public function run()    {
+
+        Anuncio::factory(5)->create();
     }
 }

@@ -15,7 +15,7 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('rol',16);
+            $table->string('role',16);
             $table->string('descripcion',255);
 
             // crea marcas de tiempo: created_at y updated_at

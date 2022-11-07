@@ -20,19 +20,19 @@ class RoleSeeder extends Seeder
         $roles = Role::factory()
                     ->count(6)
                     ->state(new Sequence(
-                        ['rol'=> 'invitado' , 'descripcion'=> 'Tienen acceso a:'.
+                        ['role'=> 'invitado' , 'descripcion'=> 'Tienen acceso a:'.
                                                                'anuncios.list (10 * pag),'.
                                                                'anuncios.show,'.
                                                                'y'.
                                                                'anuncios.search (por titulo y descripción)'
                         ],
-                        ['rol'=> 'registrado','descripcion'=> 'Tienen acceso a:'.
+                        ['role'=> 'registrado','descripcion'=> 'Tienen acceso a:'.
                                                                 'su "home" (donse se muestran sus datos'.
                                                                             'y aviso de verificación),'.
                                                                 'NO pueden crear anuncios ni ofertas'.
                                                                 'hasta que no se verifiquen.'
                         ],
-                        ['rol'=> 'verificado','descripcion'=> 'Tienen acceso a:'.
+                        ['role'=> 'verificado','descripcion'=> 'Tienen acceso a:'.
                                                                 'anuncios.create,'.
                                                                 'anuncios.delete,'.
                                                                 'anuncios.edit,'.
@@ -46,7 +46,7 @@ class RoleSeeder extends Seeder
                                                                 'ofertas.rechazar'.
                                                                 'de las oferas des sus propios anuncios.'
                         ],
-                        ['rol'=> 'editor',    'descripcion'=> 'Tienen acceso a:'.
+                        ['role'=> 'editor',    'descripcion'=> 'Tienen acceso a:'.
                                                                 'editor.anuncios.edit,'.
                                                                 'editor.anuncios.delete,'.
                                                                 'editor.anuncios.restore,'.
@@ -57,7 +57,7 @@ class RoleSeeder extends Seeder
                                                                 'editor.ofertas.purge'.
                                                                 'de cualquier usuario.'
                         ],
-                        ['rol'=> 'admin',     'descripcion'=> 'Tienen acceso a:'.
+                        ['role'=> 'admin',     'descripcion'=> 'Tienen acceso a:'.
                                                                 'admin.anuncios.edit,'.
                                                                 '...delete,'.
                                                                 '...restore,'.
@@ -73,7 +73,7 @@ class RoleSeeder extends Seeder
                                                                 'admin.usuarios.bloquear,'
 
                         ],
-                        ['rol'=> 'bloqueado', 'descripcion'=> 'Tienen acceso a:'.
+                        ['role'=> 'bloqueado', 'descripcion'=> 'Tienen acceso a:'.
                                                                 'su "home",'.
                                                                 'PERO NO puede hacer operaciones'.
                                                                 'con sus anuncios ni crear nuevos anuncios.'.

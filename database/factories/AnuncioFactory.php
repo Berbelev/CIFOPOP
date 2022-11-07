@@ -17,8 +17,8 @@ class AnuncioFactory extends Factory
             'titulo'=>$this->faker->title,
             'descripcion'=>$this->faker->paragraph(1),
             'importe'=>$this->faker->randomFloat(2,1, 5000),
-            'user_id'=>$this->faker->randomNumber([4,5,6,7,8,9,10]),
-            'created_at'=>now(),
+            'user_id'=>$this->faker->nummberBetween([1,10]),
+
         ];
     }
 }

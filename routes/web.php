@@ -9,6 +9,7 @@ use App\Http\Controllers\AnuncioController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EditorController;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
@@ -97,6 +98,19 @@ Route::prefix('admin')->middleware('auth', 'is_admin')->group(function(){
     // ver los anuncios eliminados(/admin/deletedanuncios)
     Route::get('deletedanuncios', [AdminController::class,'deletedAnuncios'])
         ->name('admin.deleted.anuncios');
+
+});
+
+/*==========================================================================
+| Grupo de rutas solo para el Editor
+|==========================================================================
+|   Llevarán el prefijo 'editor'
+*/
+Route::prefix('editor')->middleware('auth', 'is_editor')->group(function(){
+
+    // ver los anuncios eliminados(/admin/deletedanuncios)
+    Route::get('deletedanuncios', [EditorController::class,'deletedAnuncios'])
+        ->name('editor.deleted.anuncios');
 
 });
 

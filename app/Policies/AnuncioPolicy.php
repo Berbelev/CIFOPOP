@@ -84,7 +84,7 @@ class AnuncioPolicy{
 
         // true si el usuario es el propietaro o tiene uno de los roles admin o editor..
         return $user->isOwner($anuncio) ||
-               $user->hasROle(['admin', 'editor']);
+               $user->hasRole(['admin', 'editor']);
     }
 
     /**
